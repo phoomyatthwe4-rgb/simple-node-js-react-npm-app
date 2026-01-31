@@ -1,19 +1,19 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node18'
-    }
-
     stages {
-        stage('Check Node') {
+        stage('Setup Node') {
             steps {
+                script {
+                    def nodeHome = tool name: 'node18', type: 'nodejs'
+                    env.PATH = "${nodeHome}/bin:${env.PATH}"
+                }
                 sh 'node -v'
                 sh 'npm -v'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install') {
             steps {
                 sh 'npm install'
             }
