@@ -1,23 +1,14 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18-alpine'
-            args '-u root'
-        }
-    }
-
+    agent any
     stages {
-        stage('Install') {
+        stage('Build') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
                 sh 'npm install'
             }
         }
-
-        stage('Build') {
+        stage('Test') { 
             steps {
-                sh 'npm run build'
+                sh './jenkins/scripts/test.sh' 
             }
         }
     }
