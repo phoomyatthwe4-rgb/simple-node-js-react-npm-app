@@ -1,22 +1,16 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node18'
-    }
-
     stages {
-        stage('Install') {
+        stage('Build') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
-                sh 'npm install'
+                echo 'Build stage – no app yet'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test || true'
+                echo 'Test stage – placeholder'
             }
         }
     }
