@@ -1,14 +1,22 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs 'node'
+    }
+
     stages {
         stage('Build') {
             steps {
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm install'
             }
         }
-        stage('Test') { 
+
+        stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh' 
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
