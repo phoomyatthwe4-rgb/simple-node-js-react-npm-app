@@ -1,19 +1,22 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+        }
+    }
 
     stages {
-        // ... The Build stage is here ...
-        stage('Build') {
+        stage('Install') {
             steps {
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm install'
             }
         }
 
-        // NEW: We add the Test stage here
-        stage('Test') {
+        stage('Build') {
             steps {
-                // This command runs a script that checks if the app is working
-                sh './jenkins/scripts/test.sh'
+                sh 'npm run build'
             }
         }
     }
