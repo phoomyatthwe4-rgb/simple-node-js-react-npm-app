@@ -1,23 +1,19 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node18'
-    }
-
     stages {
+        // ... The Build stage is here ...
         stage('Build') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
                 sh 'npm install'
-                sh 'npm run build'
             }
         }
 
+        // NEW: We add the Test stage here
         stage('Test') {
             steps {
-                sh 'npm test'
+                // This command runs a script that checks if the app is working
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
