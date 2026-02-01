@@ -1,16 +1,14 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                echo 'Build stage – no app yet'
+                sh 'npm install'
             }
         }
-
-        stage('Test') {
+        stage('Test') { 
             steps {
-                echo 'Test stage – placeholder'
+                sh './jenkins/scripts/test.sh' 
             }
         }
     }
