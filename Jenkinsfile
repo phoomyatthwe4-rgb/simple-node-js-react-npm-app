@@ -1,11 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+        }
+    }
+
     stages {
-        stage('Build') { 
+        stage('Install Dependencies') {
             steps {
-                sh 'npm install' 
+                sh 'npm --version'
+                sh 'npm install'
             }
         }
     }
 }
-
