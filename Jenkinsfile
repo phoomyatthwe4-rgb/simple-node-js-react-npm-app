@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node18'
-    }
-
     stages {
         stage('Checkout SCM') {
             steps {
@@ -14,7 +10,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'npm install'
                 sh 'npm run build'
             }
         }
@@ -26,3 +21,4 @@ pipeline {
         }
     }
 }
+
