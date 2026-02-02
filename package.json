@@ -1,11 +1,9 @@
 {
   "name": "simple-node-js-react-npm-app",
   "version": "1.0.0",
-  "description": "Simple Node.js and React app for Jenkins CI pipeline",
-  "private": true,
-
   "scripts": {
     "build": "echo \"Build successful\"",
     "test": "echo \"Test passed\""
   }
 }
+
