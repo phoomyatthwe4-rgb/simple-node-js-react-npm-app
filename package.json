@@ -1,9 +1,8 @@
 {
   "name": "simple-node-js-react-npm-app",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
-    "test": "echo \"Tests passed\"",
-    "build": "echo \"Build successful\""
+    "build": "echo \"Build successful\"",
+    "test": "echo \"Test passed\""
   }
 }
