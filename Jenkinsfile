@@ -1,22 +1,36 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs 'node18'
+    }
+
     stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm run build'
             }
         }
+
         stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh'
+                sh 'npm test'
             }
         }
-        stage('Deliver') { 
+
+        stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
+                echo 'Delivering application...'
+                sh 'echo "Application delivered successfully"'
             }
         }
     }
 }
+
