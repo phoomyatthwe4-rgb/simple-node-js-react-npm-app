@@ -24,6 +24,13 @@ pipeline {
                 sh 'npm test'
             }
         }
+
+        stage('Deliver') {
+            steps {
+                echo 'Delivering application...'
+                sh 'echo "Application delivered successfully"'
+            }
+        }
     }
 }
 
